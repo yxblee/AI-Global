@@ -7,6 +7,11 @@ $(function() {
         // Request parameters
     };
 
+    var instagram_clientid = "cdb6ebd6ab4841d3a518e9ecaef9213d";
+    var instagram_secretkey = "43ef1a2a7c484f17aeede55a343ba6fc";
+
+    var jsonresults;
+
     $.ajax({
                url: "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize?" + $.param(params),
                beforeSend: function(xhrObj){
@@ -20,8 +25,19 @@ $(function() {
            })
         .done(function(data) {
             console.log(data);
+            paramupdate(data);
+            appendhtml();
         })
         .fail(function(data) {
             console.log(data);
         });
+
+    function paramupdate(value){
+        jsonresults = value;
+    }
+
+    function appendhtml(){
+        $('#hashtag').html("<p>Anger:" + jsonresults[0].scores.anger + "</p>");
+    };
+
 });
