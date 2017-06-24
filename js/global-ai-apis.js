@@ -9,6 +9,22 @@ $(function() {
 
     var instagram_clientid = "cdb6ebd6ab4841d3a518e9ecaef9213d";
     var instagram_secretkey = "43ef1a2a7c484f17aeede55a343ba6fc";
+    var uri_redirect = "https://github.com/yxblee/AI-Global";
+    var insta_code = "https://github.com/yxblee/AI-Global?code=d8689bef17da47cea344ebc92e598f6b";
+    var insta_access_token = "5645620360.cdb6ebd.6d138fa6fac04089867a9ceae954de7d";
+
+    var insta_user_auth_url = "https://api.instagram.com/oauth/authorize/?client_id=cdb6ebd6ab4841d3a518e9ecaef9213d&redirect_uri=https://github.com/yxblee/AI-Global&response_type=code&scope=public_content";
+
+    var get_insta_token_curl = "    curl -F 'client_id=cdb6ebd6ab4841d3a518e9ecaef9213d' \
+    -F 'client_secret=43ef1a2a7c484f17aeede55a343ba6fc' \
+    -F 'grant_type=authorization_code' \
+    -F 'redirect_uri=https://github.com/yxblee/AI-Global' \
+    -F 'code=d8689bef17da47cea344ebc92e598f6b' \
+    https://api.instagram.com/oauth/access_token";
+
+
+
+
 
     var hashtag;
 
@@ -33,6 +49,26 @@ $(function() {
         .fail(function(data) {
             console.log(data);
         });
+
+    var token = '5645620360.cdb6ebd.6d138fa6fac04089867a9ceae954de7d',
+        hashtag='party', // hashtag without # symbol
+        num_photos = 4;
+
+    $.ajax({
+               url: 'https://api.instagram.com/v1/tags/' + hashtag + '/media/recent',
+               dataType: 'jsonp',
+               type: 'GET',
+               data: {access_token: token},
+               success: function(data){
+                   console.log(data);
+                   // for(x in data.data){
+                   //     $('ul').append('<li><img src="'+data.data[x].images.standard_resolution.url+'"></li>');
+                   // }
+               },
+               error: function(data){
+                   console.log(data);
+               }
+           });
 
     function paramupdate(value){
         jsonresults = value;
@@ -64,7 +100,7 @@ $(function() {
 
     };
 
-    
+
 
 });
 function useHashtag(){
@@ -75,5 +111,5 @@ function useHashtag(){
 
 	div.innerHTML = div.innerHTML + texttest;
 
-	
+
 }
