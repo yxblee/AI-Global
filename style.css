@@ -1,12 +1,11 @@
 /*top bar, for aesthetics and not navigation, because we aren't going anywhere*/
 .navbar-default {
 	display: block;
-	text-align: center;
 	background-image:url("pineapple.png");
 	border-bottom: double;
-	border-bottom-width: 16px;
+	border-bottom-width: 3px;
 	position: relative;
-	color: #ccc;
+	color: #fff;
 }
 
 .introduction p {
