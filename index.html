@@ -32,11 +32,13 @@
 
     <div class="enter_hashtag">
         <p>Enter the hashtag you would like to search: </p>
-        <input name="hashtag" id="hashtag" type="text">
+		<form name="search" id="search_form">
+        <input name="tag" id="hashtag" type="text">
 
-        <input type="submit" value="Submit" onclick="useHashtag(document.getElementById('hashtag'))">
+        <input type="button" name="submit" value="Submit" onclick="useHashtag();">
 
-        <h1 id="hashtag"></h1>
+		</form>
+        <h1 id="showHash"></h1>
     </div>
 
 

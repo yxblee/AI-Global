@@ -64,9 +64,16 @@ $(function() {
 
     };
 
-    function useHashtag(){
-        hashtag = document.getElementById('hashtag').value;
-        $('#hashtag').html("<p>" + hashtag + "</p>");
-    }
+    
 
 });
+function useHashtag(){
+	var texttest = document.getElementById('hashtag').value;
+	console.log("test");
+	console.log(texttest);
+	var div = document.getElementById('showHash');
+
+	div.innerHTML = div.innerHTML + texttest;
+
+	
+}
