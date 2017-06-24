@@ -1,0 +1,4 @@
+# Omit Stupid IDE Files #
+#########################
+.idea/
+AI-Global.iml
