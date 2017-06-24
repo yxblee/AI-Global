@@ -10,6 +10,8 @@ $(function() {
     var instagram_clientid = "cdb6ebd6ab4841d3a518e9ecaef9213d";
     var instagram_secretkey = "43ef1a2a7c484f17aeede55a343ba6fc";
 
+    var hashtag;
+
     var jsonresults;
 
     $.ajax({
@@ -58,8 +60,13 @@ $(function() {
 
         var highest = Math.max(anger, contempt, disgust, fear, happiness, neutral, sadness, surprise);
 
-        $('#highest').html("<p>" + highest + "</p>");
+        $('#highest').html("<p>Dominant Emotion:" + highest + "</p>");
 
     };
+
+    function useHashtag(){
+        hashtag = document.getElementById('hashtag').value;
+        $('#hashtag').html("<p>" + hashtag + "</p>");
+    }
 
 });
