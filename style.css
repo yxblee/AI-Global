@@ -1,8 +1,30 @@
+/*top bar, for aesthetics and not navigation, because we aren't going anywhere*/
+.navbar-default {
+	display: block;
+	text-align: center;
+	background-image:url("pineapple.png");
+	border-bottom: double;
+	border-bottom-width: 16px;
+	position: relative;
+	color: #ccc;
+}
+
+.introduction p {
+    display: block;
+    padding: 10px;
+    text-align: center;
+}
+
+
+.results {
+    padding:10px;
+}
+
 h1 {
-    color: blue;
+    display: block;
+    padding: 20px;
+    text-align: left;
+    color: pink;
 }
 
 
-.introduction p{
-text-align: center;
-}
