@@ -149,18 +149,19 @@ $(function() {
         $('#highest').html("<p>Dominant Emotion:" + highest + "</p>");
 
     };
-
-
-
+	
 });
 function useHashtag(){
-	var texttest = document.getElementById('hashtag').value;
-	console.log("test");
-	console.log(texttest);
+	var hashtag = document.getElementById('hashtag').value;
+	console.log(hashtag);
 	var div = document.getElementById('showHash');
 
     div.innerHTML = "";
-	div.innerHTML = "#" + div.innerHTML + texttest;
+	if(hashtag.charAt(0) != "#") {
+		div.innerHTML = "#" + div.innerHTML + hashtag;
+	} else {
+		div.innerHTML = div.innerHTML + hashtag;
+	}
 
 }
 
@@ -168,6 +169,7 @@ function stopRKey(evt) {
   var evt = (evt) ? evt : ((event) ? event : null);
   var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
   if ((evt.keyCode == 13) && (node.type=="text"))  {return false;}
+  if ((evt.keyCode == 32) && (node.type=="text"))  {return false;}
 }
 
 document.onkeypress = stopRKey;
