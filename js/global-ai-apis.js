@@ -89,9 +89,9 @@ function send() {
 	                   console.log(data);
 	                   //The URL image data must be retrieved from the API call and saved as a text file to use
 	                   //with cognitive services. Without this, it will not do the job.
-	                   instaresults = '{"url" : "' + data.data[0].images.standard_resolution.url + '" }';
+	                   //instaresults = '{"url" : "' + data.data[0].images.standard_resolution.url + '" }';
 	                   // console.log(instaresults);
-	                   instaresultscall();
+	                   instaresultscall(data);
 
 	                   // for(x in data.data){
 	                   //     $('ul').append('<li><img src="'+data.data[x].images.standard_resolution.url+'"></li>');
@@ -111,81 +111,19 @@ function send() {
 	        }
 	    }
 
-	    //#############################################
-	    // /**
-	    //  * Modified from user siongui on GitHub
-	    //  * https://siongui.github.io/2012/09/29/javascript-single-callback-for-multiple-asynchronous-xhr-requests/
-	    //  *
-	    //  * Cross-Browser AJAX request (XMLHttpRequest)
-	    //  */
-	    // var AjaxRequest = function(url, callback, failCallback) {
-	    //     var xmlhttp;
-	    //
-	    //     if (window.XMLHttpRequest)
-	    //         xmlhttp=new XMLHttpRequest();
-	    //     else
-	    //         xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-	    //
-	    //     xmlhttp.onreadystatechange = function() {
-	    //         if (xmlhttp.readyState == 4) {
-	    //             if (xmlhttp.status == 200)
-	    //                 callback(xmlhttp.responseText, url);
-	    //             else
-	    //                 failCallback(url);
-	    //         }
-	    //     };
-	    //
-	    //     xmlhttp.open("POST", url, true);
-	    //     xmlhttp.send();
-	    // };
-	    //
-	    // /**
-	    //  * Issue Multiple AJAX requests to get data, and a single callback is called
-	    //  * after all AJAX requests ar completed successfully.
-	    //  */
-	    // var AjaxRequestsMulti = function(urls, callbackMulti, failCallbackMulti) {
-	    //     var isAllCallsCompleted = false;
-	    //     var isCallFailed = false;
-	    //     var data = [];
-	    //
-	    //     // Iterates through urls array to send AJAX requests
-	    //     for (var i=0; i<urls.length; i++) {
-	    //
-	    //         // If callback is successful, response text from AJAX reuqest is added to data array.
-	    //         var callback = function(responseText, url) {
-	    //             if (isCallFailed) return;
-	    //
-	    //             // Add JSON object to data array.
-	    //             data[url] = JSON.parse(responseText);
-	    //
-	    //             // get size of data
-	    //             var size = 0;
-	    //             for (var index in data) {
-	    //                 if (data.hasOwnProperty(index))
-	    //                     size ++;
-	    //             }
-	    //
-	    //             if (size == urls.length)
-	    //             // all AJAX requests are completed successfully
-	    //                 callbackMulti(data);
-	    //         };
-	    //
-	    //         var failCallback = function(url) {
-	    //             isCallFailed = true;
-	    //             failCallbackMulti(url);
-	    //         };
-	    //
-	    //         AjaxRequest(urls[i], callback, failCallback);
-	    //     }
-	    //#############################################
-
+	    
 	    /**
 	     * instaresultscall is used to call a second ajax query that uses the json from instagram and analyzes
 	     * the images(s) urls using the cognitive services API.
 	     */
-	    function instaresultscall(){
+	    function instaresultscall(data){
 	        //The following ajax queries the emotion API and detects faces on the picture passed.
-	        $.ajax({
+          var faces = [];
+          var count = 0;
+          for (var i = 0; i < data.data.length ; i++){
+            var link = '{"url" : "' + data.data[i].images.standard_resolution.url + '" }';
+	         $.ajax({
+                      async: false,
 	                   url: "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize?" + $.param(params),
 	                   beforeSend: function(xhrObj){
 	                       // Request headers
@@ -195,17 +133,22 @@ function send() {
 	                   type: "POST",
 	                   // Request body
 	                   // data: '{ "url" : "http://static2.businessinsider.com/image/5087f99369bedd394700000d/obama-press-conference-obamacare-sad.jpg" }',
-	                   data: instaresults,
+	                   data: link,
 	               })
 	            .done(function(data) {
 	                console.log(data);
-
-	                paramupdate(data);
-	                appendhtml();
+                  for(var j = 0; j < data.length ; j++){
+                    faces[count++] = data[j];
+                  }
+	                
 	            })
 	            .fail(function(data) {
 	                console.log(data);
 	            });
+        }
+        console.log(faces);
+        paramupdate(faces);
+        appendhtml();
 	    }
 
 	    /**
