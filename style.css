@@ -10,6 +10,14 @@
 
 .introduction p {
     display: block;
+    margin-left: 30px;
+    margin-right: 30px;
+    padding: 5px;
+    text-align: center;
+}
+
+.introduction h3 {
+    display: block;
     padding: 10px;
     text-align: center;
 }
