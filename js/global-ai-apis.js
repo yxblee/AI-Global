@@ -49,7 +49,7 @@ $(function() {
         });
 
     var token = '5645620360.cdb6ebd.6d138fa6fac04089867a9ceae954de7d',
-        hashtag='party', // hashtag without # symbol
+        hashtag='smile', // hashtag without # symbol
         num_photos = 4;
 
     $.ajax({
