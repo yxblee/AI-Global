@@ -311,7 +311,7 @@ function send() {
 	                break;
 	            case fear:
 	                highest = " Fear"
-	                show(document.getElementById('fears_div'));
+	                show(document.getElementById('fear_div'));
 	                break;
 	            case happiness:
 	                highest = " Happiness"
