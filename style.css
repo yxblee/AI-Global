@@ -14,9 +14,19 @@
     text-align: center;
 }
 
+.enter_hashtag {
+    display: block;
+    padding:20px;
+}
 
 .results {
-    padding:10px;
+    display: block;
+    padding:20px;
+}
+
+.results .dominant_emotion{
+    display: block;
+    padding:20px;
 }
 
 table {
@@ -32,14 +42,14 @@ td, th {
 }
 
 tr:nth-child(even) {
-    background-color: #dddddd;
+    background-color: #ffccff;
 }
 
 h1 {
     display: block;
     padding: 20px;
     text-align: left;
-    color: pink;
+    color: #ffccff;
 }
 
 

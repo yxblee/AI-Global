@@ -30,6 +30,10 @@
     </nav>
 
 
+    <div style="block" class="introduction">
+        <p>Exciting Introduction</p>
+    </div>
+
     <div class="enter_hashtag">
         <p>Enter the hashtag you would like to search: </p>
 		<form name="search" id="search_form">
@@ -42,13 +46,9 @@
     </div>
 
 
-    <div style="block" class="introduction">
-        <p>Exciting Introduction</p>
-    </div>
-
  <div class="results">
 
-     <p>Results:</p>
+     <h2>Results:</h2>
 
      <table>
          <tr>
@@ -89,7 +89,38 @@
          </tr>
      </table>
 
-     <p id="highest"> Dominant Emotion:  </p>
+     <div id="dominant_emotion">
+
+         <h3 id="highest"></h3>
+
+     </div>
+
+     <!-- Results-dependant divs, just for funs -->
+
+     <div id="anger_div">
+        <p>Wow - this hashtag is angry! </p>
+     </div>
+     <div id="contempt_div">
+         <p>This hashtag doesn't like what it sees... hmph!</p>
+     </div>
+     <div id="disgust_div">
+         <p>Yuck. This hashtag seems to be pretty disgusted!</p>
+     </div>
+     <div id="fear_div">
+         <p>Spooky! This hashtag is primariy associated with fear!</p>
+     </div>
+     <div id="happiness_div">
+         <p>How lovely! Individuals in these photos are primarily happy. </p>
+     </div>
+     <div id="neutral_div">
+         <p>Well, that's kind of boring. Most people in these photos are feeling pretty neutral.</p>
+     </div>
+     <div id="sadness_div">
+         <p>Oh no, these aren't happy photos at all! What a sad hashtag. </p>
+     </div>
+     <div id="surprise_div">
+         <p>Shocking! This hashtag is mostly associated with surprise. </p>
+     </div>
 
  </div>
 
