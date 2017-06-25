@@ -155,8 +155,12 @@ function useHashtag(){
 	var hashtag = document.getElementById('hashtag').value;
 	console.log(hashtag);
 	var div = document.getElementById('showHash');
-
+	var hide = document.getElementById('results');
+	
+	document.getElementById('results').style.display = "block";
+	
     div.innerHTML = "";
+	
 	if(hashtag.charAt(0) != "#") {
 		div.innerHTML = "#" + div.innerHTML + hashtag;
 	} else {
