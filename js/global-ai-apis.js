@@ -3,6 +3,17 @@
  */
 
 $(function() {
+
+    //hide all result divs
+    hide(document.getElementById('anger_div'));
+    hide(document.getElementById('contempt_div'));
+    hide(document.getElementById('disgust_div'));
+    hide(document.getElementById('fear_div'));
+    hide(document.getElementById('happiness_div'));
+    hide(document.getElementById('neutral_div'));
+    hide(document.getElementById('sadness_div'));
+    hide(document.getElementById('surprise_div'));
+
     var params = {
         // Request parameters
     };
@@ -251,36 +262,92 @@ $(function() {
         $('#sadness').html("<p>" + sadness + "</p>");
         $('#surprise').html("<p>" + surprise + "</p>");
 
-        var highest = Math.max(anger, contempt, disgust, fear, happiness, neutral, sadness, surprise);
+        var highestNum = Math.max(anger, contempt, disgust, fear, happiness, neutral, sadness, surprise);
+        var highest = "";
+
+        switch(highestNum){
+            case anger:
+                highest = " Anger"
+                show(document.getElementById('anger_div'));
+                break;
+            case contempt:
+                highest = " Contempt"
+                show(document.getElementById('contempt_div'));
+                break;
+            case disgust:
+                highest = " Disgust"
+                show(document.getElementById('disgust_div'));
+                break;
+            case fear:
+                highest = " Fear"
+                show(document.getElementById('fears_div'));
+                break;
+            case happiness:
+                highest = " Happiness"
+                show(document.getElementById('happiness_div'));
+                break;
+            case neutral:
+                highest = " Neutral"
+                show(document.getElementById('neutral_div'));
+                break;
+            case sadness:
+                highest = " Sadness"
+                show(document.getElementById('sadness_div'));
+                break;
+            case surprise:
+                highest = " Surprise"
+                show(document.getElementById('surprise_div'));
+                break;
+            default:
+                highest = "Unknown";
+        }
 
         $('#highest').html("<p>Dominant Emotion:" + highest + "</p>");
 
     };
-
 });
 
 /**
  *
  */
 function useHashtag(){
-	var texttest = document.getElementById('hashtag').value;
-	console.log("test");
-	console.log(texttest);
+	var hashtag = document.getElementById('hashtag').value;
+	console.log(hashtag);
 	var div = document.getElementById('showHash');
-
-	div.innerHTML = div.innerHTML + texttest;
+	var hide = document.getElementById('results');
 	
+	document.getElementById('results').style.display = "block";
+	
+    div.innerHTML = "";
+	
+	if(hashtag.charAt(0) != "#") {
+		div.innerHTML = "#" + div.innerHTML + hashtag;
+	} else {
+		div.innerHTML = div.innerHTML + hashtag;
+	}
+
 }
 
-/**
- *
- * @param evt
- * @returns {boolean}
- */
-function stopRKey(evt) { 
-  var evt = (evt) ? evt : ((event) ? event : null); 
-  var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null); 
-  if ((evt.keyCode == 13) && (node.type=="text"))  {return false;} 
-} 
 
-document.onkeypress = stopRKey; 
+function stopRKey(evt) {
+  var evt = (evt) ? evt : ((event) ? event : null);
+  var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
+  if ((evt.keyCode == 13) && (node.type=="text"))  {return false;}
+  if ((evt.keyCode == 32) && (node.type=="text"))  {return false;}
+}
+
+document.onkeypress = stopRKey;
+
+function hide (elements) {
+  elements = elements.length ? elements : [elements];
+  for (var index = 0; index < elements.length; index++) {
+    elements[index].style.display = 'none';
+  }
+}
+
+function show (elements){
+  elements = elements.length ? elements : [elements];
+  for (var index = 0; index < elements.length; index++) {
+    elements[index].style.display = 'block';
+  }
+}
