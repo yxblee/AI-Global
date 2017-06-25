@@ -17,15 +17,18 @@ print([s.text for s in statuses])
 # users = api.GetFriends()
 # print([u.name for u in users])
 
-with open('status.txt', 'w', encoding='utf-8') as outfile:
-    json.dump(statuses, outfile, ensure_ascii=False)
+# with open('status.txt', 'w', encoding='utf-8') as outfile:
+#     json.dump(statuses, outfile, ensure_ascii=False)
 
-with open('output.txt', 'a') as f:
+with open('output.json', 'w', encoding='utf-8') as f:
     # api.GetStreamFilter will return a generator that yields one status
     # message (i.e., Tweet) at a time as a JSON dictionary.
-    for line in api.GetStreamFilter(track='@twitter', languages='en'):
-        f.write(json.dumps(line))
-        f.write('\n')
+    for line in api.GetStreamFilter(track=['#party'], languages=['en']):
+        for i in range(5):
+	        f.write(json.dumps(line))
+	        f.write('\n')
+        	print(i)
+        
 
 
 
