@@ -26,7 +26,9 @@ $(function() {
 
 
 
-        var jsonresults;
+    var hashtag;
+
+    var jsonresults;
 
     $.ajax({
                url: "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize?" + $.param(params),
@@ -94,8 +96,27 @@ $(function() {
 
         var highest = Math.max(anger, contempt, disgust, fear, happiness, neutral, sadness, surprise);
 
-        $('#highest').html("<p>" + highest + "</p>");
+        $('#highest').html("<p>Dominant Emotion:" + highest + "</p>");
 
     };
 
+
+
 });
+function useHashtag(){
+	var texttest = document.getElementById('hashtag').value;
+	console.log("test");
+	console.log(texttest);
+	var div = document.getElementById('showHash');
+
+	div.innerHTML = div.innerHTML + texttest;
+	
+}
+
+function stopRKey(evt) { 
+  var evt = (evt) ? evt : ((event) ? event : null); 
+  var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null); 
+  if ((evt.keyCode == 13) && (node.type=="text"))  {return false;} 
+} 
+
+document.onkeypress = stopRKey; 
