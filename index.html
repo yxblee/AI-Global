@@ -30,19 +30,24 @@
     </nav>
 
 
-    <div style="block" class="introduction">
-        <h3>Hashtag Emotion Analyzer</h3>
-        <p>
-            Sure, it might have seemed like a <b>#party</b>. But were the people at <b>#Coachella</b> really having as much fun as
-             you think they were?
-        </p>
-        <p>Find out if the <b>#GoodTimes</b> were just <b>#FakeNews</b>, with our <font color="800080"><b>Hashtag Emotion Analyzer</b></font>! Enter a hashtag below!
-        </p>
-    </div>
+<div style="display:block;" class="introduction">
+    <h3>Hashtag Emotion Analyzer</h3>
+    <hr>
+    <p>
+        Sure, it might have seemed like a <font color=#800080><b>#party</b></font>.
+        the people at <font color="80080"><b>#Coachella</b></font> really having as much fun as
+        you think they were?
+    </p>
+    <p>Find out if the <font color="800080"><b>#GoodTimes</b></font> were just <font color="800080"><b>#FakeNews</b></font>,
+        with our <font color="800080"><b>Hashtag Emotion Analyzer</b></font>!
 
-    <div class="enter_hashtag">
-        <p>Enter the hashtag you would like to search: </p>
-		<form name="search" id="search_form">
+        <br><br><i>Enter a hashtag below!</i>
+
+    </p>
+</div>
+
+<div class="enter_hashtag">
+    <form name="search" id="search_form">
         <input name="tag" id="hashtag" type="text">
 
         <input type="button" name="submit" value="Submit" onclick="useHashtag();">
@@ -51,12 +56,13 @@
         <h1 id="showHash"></h1>
     </div>
 
+    <hr>
 
  <div class="results" id="results">
 
-     <h2>Results:</h2>
+     <h2 style="font-variant:small-caps;">Results</h2>
 
-     <table>
+     <table class="center">
          <tr>
              <th>EMOTION</th>
              <th>SCORE (%)</th>
@@ -138,12 +144,12 @@
 
  </div>
 
- <div class="container" id="footer">
-     <hr>
-        <footer>
-            <p><i>Team </i><b>R U Fake</b> - <i>Global AI Hackathon 2017</i></p>
-        </footer>
-    </div>
+<div class="container" id="footer">
+    <footer>
+        <hr>
+        <p><i>Team </i><b>R U Fake</b> - <i>Global AI Hackathon 2017</i></p>
+    </footer>
+</div>
 
  <script src="js/global-ai-apis.js"> </script>
 </body>
