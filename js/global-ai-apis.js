@@ -207,14 +207,14 @@ $(function() {
             surprise += parseFloat(value[i].scores.surprise);
         }
 
-        anger = anger / value.length;
-        contempt = contempt / value.length;
-        disgust = disgust / value.length;
-        fear = fear / value.length;
-        happiness = happiness / value.length;
-        neutral = neutral / value.length;
-        sadness = sadness / value.length;
-        surprise = surprise / value.length;
+        anger = 100 * anger / value.length;
+        contempt = 100 * contempt / value.length;
+        disgust = 100 * disgust / value.length;
+        fear = 100 * fear / value.length;
+        happiness = 100 * happiness / value.length;
+        neutral = 100 * neutral / value.length;
+        sadness = 100 * sadness / value.length;
+        surprise = 100 * surprise / value.length;
 
 
         // jsonresults = value;
@@ -253,14 +253,14 @@ $(function() {
         var sadness = jsonresults.sadness;
         var surprise = jsonresults.surprise;
 
-        $('#anger').html("<p>" + anger + "</p>");
-        $('#contempt').html("<p>" + contempt + "</p>");
-        $('#disgust').html("<p>" + disgust + "</p>");
-        $('#fear').html("<p>" + fear + "</p>");
-        $('#happiness').html("<p>" + happiness + "</p>");
-        $('#neutral').html("<p>" + neutral + "</p>");
-        $('#sadness').html("<p>" + sadness + "</p>");
-        $('#surprise').html("<p>" + surprise + "</p>");
+        $('#anger').html("<p>" + anger.toFixed(5) + "</p>");
+        $('#contempt').html("<p>" + contempt.toFixed(5) + "</p>");
+        $('#disgust').html("<p>" + disgust.toFixed(5) + "</p>");
+        $('#fear').html("<p>" + fear.toFixed(5) + "</p>");
+        $('#happiness').html("<p>" + happiness.toFixed(5) + "</p>");
+        $('#neutral').html("<p>" + neutral.toFixed(5) + "</p>");
+        $('#sadness').html("<p>" + sadness.toFixed(5) + "</p>");
+        $('#surprise').html("<p>" + surprise.toFixed(5) + "</p>");
 
         var highestNum = Math.max(anger, contempt, disgust, fear, happiness, neutral, sadness, surprise);
         var highest = "";
