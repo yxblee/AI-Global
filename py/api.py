@@ -1,4 +1,5 @@
 import twitter
+import json
 
 api = twitter.Api(consumer_key='DXKLr99ACQ66nOru2eAiuAlDC',
                   consumer_secret='gBwVqldX1CDtg2UkE0pF4Z4GhCfVFLDGQtdxY2lfB7j5NWPc5Q',
@@ -13,3 +14,5 @@ print([s.text for s in statuses])
 # users = api.GetFriends()
 # print([u.name for u in users])
 
+with open('status.txt', 'w', encoding='utf-8') as outfile:
+    json.dump(statuses, outfile, ensure_ascii=False)
