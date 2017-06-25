@@ -330,7 +330,7 @@ function send() {
 	                show(document.getElementById('surprise_div'));
 	                break;
 	            default:
-	                highest = "Unknown";
+	                highest = " None! There may have been no faces in photos with this hashtag."
 	        }
 
 	        $('#highest').html("<p>Dominant Emotion:" + highest + "</p>");
